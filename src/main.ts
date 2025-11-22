@@ -92,7 +92,11 @@ const els = {
     restartScriptBtn: document.getElementById('restartScriptBtn')!,
     toggleSettingsBtn: document.getElementById('toggleSettingsBtn')!,
     themeDarkBtn: document.getElementById('themeDarkBtn')!,
-    themeLightBtn: document.getElementById('themeLightBtn')!
+    themeLightBtn: document.getElementById('themeLightBtn')!,
+    // Quick Actions
+    copyScriptBtn: document.getElementById('copyScriptBtn')!,
+    clearScriptBtn: document.getElementById('clearScriptBtn')!,
+    pasteScriptBtn: document.getElementById('pasteScriptBtn')!
 };
 
 // --- Initialization ---
@@ -483,6 +487,42 @@ function toggleMirror() {
     }
 }
 
+// --- Quick Actions ---
+async function copyScript() {
+    const text = els.inputScript.value;
+    if (!text) return;
+
+    try {
+        await navigator.clipboard.writeText(text);
+        // Visual feedback
+        const btn = els.copyScriptBtn;
+        const originalText = btn.innerHTML;
+        btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg> Copied!';
+        setTimeout(() => {
+            btn.innerHTML = originalText;
+        }, 1500);
+    } catch (err) {
+        console.error('Failed to copy:', err);
+        alert('Failed to copy to clipboard');
+    }
+}
+
+function clearScript() {
+    els.inputScript.value = '';
+    els.inputScript.focus();
+}
+
+async function pasteToReplace() {
+    try {
+        const text = await navigator.clipboard.readText();
+        els.inputScript.value = text;
+        els.inputScript.focus();
+    } catch (err) {
+        console.error('Failed to paste:', err);
+        alert('Failed to paste from clipboard. Please grant clipboard permissions or paste manually.');
+    }
+}
+
 // --- Event Listeners ---
 function setupEventListeners() {
     els.loadScriptBtn.addEventListener('click', () => loadScript());
@@ -493,6 +533,11 @@ function setupEventListeners() {
     els.toggleSettingsBtn.addEventListener('click', toggleSettings);
     els.themeDarkBtn.addEventListener('click', () => setTheme('dark'));
     els.themeLightBtn.addEventListener('click', () => setTheme('light'));
+
+    // Quick Actions
+    els.copyScriptBtn.addEventListener('click', copyScript);
+    els.clearScriptBtn.addEventListener('click', clearScript);
+    els.pasteScriptBtn.addEventListener('click', pasteToReplace);
 
     els.alignBtns.left.addEventListener('click', () => setTextAlign('left'));
     els.alignBtns.center.addEventListener('click', () => setTextAlign('center'));
