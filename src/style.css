@@ -59,6 +59,7 @@ html {
 /* Custom Range Slider Styling for Mobile */
 input[type=range] {
     -webkit-appearance: none;
+    appearance: none;
     /* Hides the slider so that custom slider can be made */
     width: 100%;
     /* Specific width is required for Firefox. */
@@ -68,6 +69,7 @@ input[type=range] {
 
 input[type=range]::-webkit-slider-thumb {
     -webkit-appearance: none;
+    appearance: none;
     height: 24px;
     width: 24px;
     border-radius: 50%;
@@ -114,33 +116,12 @@ input[type=range]::-moz-range-track {
     @apply opacity-50;
 }
 
-/* Mirror Effect - Vertical Flip for Flat Device + 45deg Glass */
+/* Mirror Effect - Vertical & Horizontal Flip (Rotate 180deg) */
 .mirror-mode {
-    transform: scaleY(-1);
+    transform: scale(-1, -1);
 }
 
-/* Range Slider Styling */
-input[type=range] {
-    -webkit-appearance: none;
-    background: transparent;
-}
 
-input[type=range]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    height: 16px;
-    width: 16px;
-    border-radius: 50%;
-    background: #3b82f6;
-    margin-top: -6px;
-    border: 2px solid #1f2937;
-}
-
-input[type=range]::-webkit-slider-runnable-track {
-    width: 100%;
-    height: 4px;
-    background: #4b5563;
-    border-radius: 2px;
-}
 
 /* Toggle Switch Styling */
 .toggle-checkbox:checked {

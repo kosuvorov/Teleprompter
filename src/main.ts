@@ -255,11 +255,11 @@ els.mirrorBtn.addEventListener('click', () => {
     const knob = els.mirrorToggleKnob;
 
     if (state.isMirrored) {
-        els.prompterContainer.classList.add('scale-x-[-1]');
+        els.scrollContainer.classList.add('mirror-mode');
         knob.classList.add('translate-x-6', 'bg-blue-500');
         knob.classList.remove('bg-neutral-400');
     } else {
-        els.prompterContainer.classList.remove('scale-x-[-1]');
+        els.scrollContainer.classList.remove('mirror-mode');
         knob.classList.remove('translate-x-6', 'bg-blue-500');
         knob.classList.add('bg-neutral-400');
     }
