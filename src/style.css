@@ -165,3 +165,17 @@ input[type=range]::-moz-range-track {
 .recording-pulse {
     animation: pulse-red 2s infinite;
 }
+
+/* Safari landscape fix - ensure floating buttons are visible */
+@media (orientation: landscape) and (max-height: 500px) {
+
+    /* Force floating buttons to be visible in landscape on all browsers including Safari */
+    .absolute.bottom-8 {
+        bottom: 0.5rem !important;
+    }
+
+    /* Ensure z-index is high enough */
+    .z-20 {
+        z-index: 9999 !important;
+    }
+}
