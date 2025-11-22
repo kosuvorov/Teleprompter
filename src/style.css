@@ -28,6 +28,8 @@ html {
     margin-right: 0.6em;
     margin-bottom: 0.2em;
     cursor: pointer;
+    overflow-wrap: break-word;
+    word-break: break-word;
 }
 
 /* Skippable words (inside brackets or emojis) */

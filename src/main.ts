@@ -369,10 +369,13 @@ function scrollToCurrent() {
     if (state.currentIndex > 0 && state.currentIndex < state.scriptWords.length) {
         const activeEl = state.scriptWords[state.currentIndex].element;
         if (activeEl) {
-            activeEl.scrollIntoView({
-                behavior: 'smooth',
-                block: 'center',
-                inline: 'center'
+            // Calculate position to be at 1/3 from the top
+            const containerHeight = els.scrollContainer.clientHeight;
+            const targetTop = activeEl.offsetTop - (containerHeight / 3);
+
+            els.scrollContainer.scrollTo({
+                top: targetTop,
+                behavior: 'smooth'
             });
         }
     }
