@@ -23,67 +23,69 @@
     </div>
 
     <!-- Setup Screen -->
-    <div id="setupScreen" class="flex flex-col h-full max-w-4xl mx-auto p-4 md:p-8">
-        <header class="mb-8 text-center">
+    <div id="setupScreen"
+        class="flex flex-col h-full max-w-4xl mx-auto p-4 md:p-8 landscape:p-2 landscape:max-h-screen landscape:overflow-y-auto">
+        <header class="mb-8 landscape:mb-3 text-center">
             <h1
-                class="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500 mb-2">
+                class="text-4xl landscape:text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500 mb-2 landscape:mb-1">
                 Voice Teleprompter</h1>
-            <p class="text-neutral-400">Paste your script and let your voice control the scroll.</p>
+            <p class="text-neutral-400 landscape:text-sm landscape:hidden sm:landscape:block">Paste your script and let
+                your voice control the scroll.</p>
         </header>
 
-        <main class="flex-1 flex flex-col gap-6 min-h-0">
-            <div class="flex-1 flex flex-col min-h-0">
+        <main class="flex-1 flex flex-col gap-6 landscape:gap-3 min-h-0">
+            <div class="flex-1 flex flex-col min-h-0 landscape:min-h-[120px]">
                 <textarea id="inputScript"
-                    class="flex-1 w-full bg-neutral-900 border border-neutral-800 rounded-lg p-4 text-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none resize-none transition-all placeholder-neutral-600"
+                    class="flex-1 w-full bg-neutral-900 border border-neutral-800 rounded-lg p-4 landscape:p-2 text-lg landscape:text-base focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none resize-none transition-all placeholder-neutral-600 landscape:min-h-[100px]"
                     placeholder="Paste your script here..."></textarea>
 
                 <!-- Quick Action Buttons -->
-                <div class="flex gap-2 mt-2 justify-end">
+                <div class="flex gap-2 landscape:gap-1 mt-2 landscape:mt-1 justify-end flex-wrap">
                     <button id="copyScriptBtn"
-                        class="px-3 py-1.5 bg-neutral-800 hover:bg-neutral-700 border border-neutral-700 rounded text-xs text-neutral-300 transition-all flex items-center gap-1.5"
+                        class="px-3 py-1.5 landscape:px-2 landscape:py-1 bg-neutral-800 hover:bg-neutral-700 border border-neutral-700 rounded text-xs landscape:text-[10px] text-neutral-300 transition-all flex items-center gap-1.5 landscape:gap-1"
                         title="Copy to clipboard">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 landscape:h-3 landscape:w-3"
+                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
                         </svg>
-                        Copy
+                        <span class="landscape:hidden sm:landscape:inline">Copy</span>
                     </button>
                     <button id="clearScriptBtn"
-                        class="px-3 py-1.5 bg-neutral-800 hover:bg-neutral-700 border border-neutral-700 rounded text-xs text-neutral-300 transition-all flex items-center gap-1.5"
+                        class="px-3 py-1.5 landscape:px-2 landscape:py-1 bg-neutral-800 hover:bg-neutral-700 border border-neutral-700 rounded text-xs landscape:text-[10px] text-neutral-300 transition-all flex items-center gap-1.5 landscape:gap-1"
                         title="Clear all text">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 landscape:h-3 landscape:w-3"
+                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                         </svg>
-                        Clear All
+                        <span class="landscape:hidden sm:landscape:inline">Clear All</span>
                     </button>
                     <button id="pasteScriptBtn"
-                        class="px-3 py-1.5 bg-neutral-800 hover:bg-neutral-700 border border-neutral-700 rounded text-xs text-neutral-300 transition-all flex items-center gap-1.5"
+                        class="px-3 py-1.5 landscape:px-2 landscape:py-1 bg-neutral-800 hover:bg-neutral-700 border border-neutral-700 rounded text-xs landscape:text-[10px] text-neutral-300 transition-all flex items-center gap-1.5 landscape:gap-1"
                         title="Paste from clipboard">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 landscape:h-3 landscape:w-3"
+                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                         </svg>
-                        Paste to Replace
+                        <span class="landscape:hidden sm:landscape:inline">Paste to Replace</span>
                     </button>
                 </div>
             </div>
 
-            <div class="flex justify-center">
+            <div class="flex justify-center landscape:mt-2">
                 <button id="loadScriptBtn"
-                    class="bg-blue-600 hover:bg-blue-500 text-white px-8 py-3 rounded-full font-bold text-lg shadow-lg shadow-blue-900/20 transition-all transform hover:scale-105 active:scale-95">
+                    class="bg-blue-600 hover:bg-blue-500 text-white px-8 py-3 landscape:px-6 landscape:py-2 rounded-full font-bold text-lg landscape:text-base shadow-lg shadow-blue-900/20 transition-all transform hover:scale-105 active:scale-95">
                     Start Teleprompter
                 </button>
             </div>
 
             <!-- Language Selector -->
-            <div class="mt-4 flex items-center justify-center gap-2">
-                <label class="text-sm text-neutral-400">🌐 Language:</label>
+            <div class="mt-4 landscape:mt-2 flex items-center justify-center gap-2 landscape:gap-1 flex-wrap">
+                <label class="text-sm landscape:text-xs text-neutral-400">🌐 Language:</label>
                 <select id="languageSelect"
-                    class="bg-neutral-800 border border-neutral-700 rounded px-3 py-1 text-sm text-neutral-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none">
+                    class="bg-neutral-800 border border-neutral-700 rounded px-3 py-1 landscape:px-2 landscape:py-0.5 text-sm landscape:text-xs text-neutral-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none">
                     <option value="en-US">English (US)</option>
                     <option value="es-ES">Spanish</option>
                     <option value="fr-FR">French</option>
@@ -106,14 +108,14 @@
                     <option value="no-NO">Norwegian</option>
                 </select>
                 <button id="autoDetectBtn"
-                    class="bg-neutral-700 hover:bg-neutral-600 border border-neutral-600 text-neutral-300 px-3 py-1 rounded text-sm transition-all"
+                    class="bg-neutral-700 hover:bg-neutral-600 border border-neutral-600 text-neutral-300 px-3 py-1 landscape:px-2 landscape:py-0.5 rounded text-sm landscape:text-xs transition-all"
                     title="Auto-detect language from script">
                     Auto-detect
                 </button>
             </div>
 
             <!-- History Section -->
-            <div id="historySection" class="mt-4 border-t border-neutral-800 pt-6">
+            <div id="historySection" class="mt-4 landscape:mt-2 border-t border-neutral-800 pt-6 landscape:pt-3">
                 <div class="flex justify-between items-center mb-4">
                     <h3 class="text-neutral-400 font-medium uppercase tracking-wider text-sm">Recent Scripts</h3>
                     <button id="clearHistoryBtn"
@@ -140,14 +142,15 @@
         </div>
 
         <!-- Controls Overlay -->
-        <div class="absolute bottom-8 left-0 right-0 flex justify-center items-center gap-6 z-20 pointer-events-none">
+        <div
+            class="absolute bottom-8 landscape:bottom-2 left-0 right-0 flex justify-center items-center gap-6 landscape:gap-3 z-20 pointer-events-none">
 
             <!-- Reset App -->
             <button id="resetAppBtn"
-                class="pointer-events-auto p-3 rounded-full bg-neutral-800/80 backdrop-blur text-neutral-400 hover:text-white hover:bg-neutral-700 transition-all"
+                class="pointer-events-auto p-3 landscape:p-2 rounded-full bg-neutral-800/80 backdrop-blur text-neutral-400 hover:text-white hover:bg-neutral-700 transition-all"
                 title="Back to Editor">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 landscape:h-5 landscape:w-5" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M11 17l-5-5m0 0l5-5m-5 5h12" />
                 </svg>
@@ -155,24 +158,24 @@
 
             <!-- Mic Button -->
             <button id="micButton"
-                class="pointer-events-auto h-16 w-16 rounded-full bg-neutral-800 border-2 border-neutral-600 flex items-center justify-center transition-all shadow-xl hover:scale-105 active:scale-95 group">
+                class="pointer-events-auto h-16 w-16 landscape:h-12 landscape:w-12 rounded-full bg-neutral-800 border-2 border-neutral-600 flex items-center justify-center transition-all shadow-xl hover:scale-105 active:scale-95 group">
                 <svg id="micIcon" xmlns="http://www.w3.org/2000/svg"
-                    class="h-8 w-8 text-white group-hover:text-blue-400 transition-colors" fill="none"
-                    viewBox="0 0 24 24" stroke="currentColor">
+                    class="h-8 w-8 landscape:h-6 landscape:w-6 text-white group-hover:text-blue-400 transition-colors"
+                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
                 </svg>
                 <div id="statusIndicator"
-                    class="hidden absolute -top-1 -right-1 h-4 w-4 bg-green-500 rounded-full border-2 border-black">
+                    class="hidden absolute -top-1 -right-1 h-4 w-4 landscape:h-3 landscape:w-3 bg-green-500 rounded-full border-2 border-black">
                 </div>
             </button>
 
             <!-- Restart Script -->
             <button id="restartScriptBtn"
-                class="pointer-events-auto p-3 rounded-full bg-neutral-800/80 backdrop-blur text-neutral-400 hover:text-white hover:bg-neutral-700 transition-all"
+                class="pointer-events-auto p-3 landscape:p-2 rounded-full bg-neutral-800/80 backdrop-blur text-neutral-400 hover:text-white hover:bg-neutral-700 transition-all"
                 title="Restart Script">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 landscape:h-5 landscape:w-5" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                 </svg>
@@ -180,10 +183,10 @@
 
             <!-- Settings Toggle -->
             <button id="toggleSettingsBtn"
-                class="pointer-events-auto p-3 rounded-full bg-neutral-800/80 backdrop-blur text-neutral-400 hover:text-white hover:bg-neutral-700 transition-all"
+                class="pointer-events-auto p-3 landscape:p-2 rounded-full bg-neutral-800/80 backdrop-blur text-neutral-400 hover:text-white hover:bg-neutral-700 transition-all"
                 title="Settings">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 landscape:h-5 landscape:w-5" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
