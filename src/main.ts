@@ -3,7 +3,7 @@ import { registerSW } from 'virtual:pwa-register';
 import { initElements, els } from './elements';
 import { state } from './state';
 import { detectLanguage, getLanguageName } from './utils';
-import { renderScript, updateHighlight, scrollToCurrent, applyColors, renderHistoryList, restartScript } from './render';
+import { renderScript, updateHighlight, scrollToCurrent, applySettings, renderHistoryList, restartScript } from './render';
 import { initSpeech, startListening, stopListening } from './speech';
 import { saveToHistory, getHistory, clearAllHistory } from './storage';
 import { ScriptWord } from './types';
@@ -92,6 +92,7 @@ function loadScript(text: string): void {
     });
 
     renderScript();
+    applySettings(); // Ensure settings are applied after render
 }
 
 function resetApp(): void {
@@ -182,6 +183,14 @@ els.lineHeightInput.addEventListener('input', (e) => {
     els.scriptContent.style.lineHeight = `${val}`;
 });
 
+// Paragraph Spacing Slider
+els.paragraphSpacingInput.addEventListener('input', (e) => {
+    const val = parseFloat((e.target as HTMLInputElement).value);
+    state.config.paragraphSpacing = val;
+    els.paragraphSpacingVal.textContent = `${val}em`;
+    applySettings();
+});
+
 // Margin Slider
 els.marginInput.addEventListener('input', (e) => {
     const val = parseInt((e.target as HTMLInputElement).value);
@@ -194,13 +203,13 @@ els.marginInput.addEventListener('input', (e) => {
 // Text Color Picker
 els.textColorInput.addEventListener('input', (e) => {
     state.config.textColor = (e.target as HTMLInputElement).value;
-    applyColors();
+    applySettings();
 });
 
 // Background Color Picker
 els.bgColorInput.addEventListener('input', (e) => {
     state.config.bgColor = (e.target as HTMLInputElement).value;
-    applyColors();
+    applySettings();
 });
 
 // Alignment Buttons
@@ -229,7 +238,7 @@ els.themeDarkBtn.addEventListener('click', () => {
     state.config.textColor = '#ffffff';
     els.bgColorInput.value = '#000000';
     els.textColorInput.value = '#ffffff';
-    applyColors();
+    applySettings();
 });
 
 els.themeLightBtn.addEventListener('click', () => {
@@ -237,7 +246,7 @@ els.themeLightBtn.addEventListener('click', () => {
     state.config.textColor = '#000000';
     els.bgColorInput.value = '#ffffff';
     els.textColorInput.value = '#000000';
-    applyColors();
+    applySettings();
 });
 
 // Mirror Toggle

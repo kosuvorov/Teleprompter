@@ -10,6 +10,8 @@ export interface Elements {
     fontSizeVal: HTMLElement;
     lineHeightInput: HTMLInputElement;
     lineHeightVal: HTMLElement;
+    paragraphSpacingInput: HTMLInputElement;
+    paragraphSpacingVal: HTMLElement;
     marginInput: HTMLInputElement;
     marginVal: HTMLElement;
     textColorInput: HTMLInputElement;
@@ -64,6 +66,8 @@ export function initElements(): void {
         fontSizeVal: document.getElementById('fontSizeVal')!,
         lineHeightInput: document.getElementById('lineHeightInput') as HTMLInputElement,
         lineHeightVal: document.getElementById('lineHeightVal')!,
+        paragraphSpacingInput: document.getElementById('paragraphSpacingInput') as HTMLInputElement,
+        paragraphSpacingVal: document.getElementById('paragraphSpacingVal')!,
         marginInput: document.getElementById('marginInput') as HTMLInputElement,
         marginVal: document.getElementById('marginVal')!,
         textColorInput: document.getElementById('textColorInput') as HTMLInputElement,

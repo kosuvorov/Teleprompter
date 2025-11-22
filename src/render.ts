@@ -17,7 +17,6 @@ export function renderScript(): void {
         } else if (obj.isBreak) {
             classList += "line-break ";
             span.style.display = 'block';
-            span.style.height = '1em'; // Add some height to the empty line
             span.style.width = '100%';
         } else if (obj.skip) {
             classList += "skipped-word ";
@@ -110,9 +109,10 @@ export function restartScript(): void {
     els.scrollContainer.scrollTop = 0;
 }
 
-export function applyColors(): void {
+export function applySettings(): void {
     els.appBody.style.backgroundColor = state.config.bgColor;
     els.appBody.style.color = state.config.textColor;
+    els.scriptContent.style.setProperty('--paragraph-spacing', `${state.config.paragraphSpacing}em`);
 }
 
 export function updateMicUI(isListening: boolean): void {

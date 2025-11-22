@@ -47,6 +47,13 @@ html {
     display: inline-block;
 }
 
+/* Line Breaks (Paragraphs) */
+.line-break {
+    display: block;
+    width: 100%;
+    height: var(--paragraph-spacing, 1em);
+}
+
 /* Opacity Classes */
 
 /* Custom Range Slider Styling for Mobile */

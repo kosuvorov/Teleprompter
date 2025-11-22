@@ -16,6 +16,7 @@ export const state: AppState = {
         textAlign: 'center',
         showStopIcon: false,
         preserveFormatting: false,
-        voiceCommandsEnabled: true
+        voiceCommandsEnabled: true,
+        paragraphSpacing: 1.0
     }
 };

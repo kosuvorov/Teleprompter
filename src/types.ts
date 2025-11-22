@@ -17,6 +17,7 @@ export interface AppConfig {
     showStopIcon: boolean;
     preserveFormatting: boolean;
     voiceCommandsEnabled: boolean;
+    paragraphSpacing: number;
 }
 
 export interface AppState {
