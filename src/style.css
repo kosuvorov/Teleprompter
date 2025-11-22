@@ -121,9 +121,9 @@ input[type=range]::-moz-range-track {
     transform: scaleX(-1) rotate(180deg);
 }
 
-/* Screen Rotation - Rotate entire app 90deg counterclockwise for iOS */
+/* Screen Rotation - Rotate entire app 90deg clockwise for iOS */
 .screen-rotated {
-    transform: rotate(-90deg);
+    transform: rotate(90deg);
     transform-origin: center center;
     width: 100vh;
     height: 100vw;
@@ -132,6 +132,7 @@ input[type=range]::-moz-range-track {
     left: 50%;
     margin-left: -50vh;
     margin-top: -50vw;
+    overflow: auto;
 }
 
 

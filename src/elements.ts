@@ -36,6 +36,7 @@ export interface Elements {
     resetAppBtn: HTMLElement;
     restartScriptBtn: HTMLElement;
     toggleSettingsBtn: HTMLElement;
+    closeSettingsBtn: HTMLElement;
     themeDarkBtn: HTMLElement;
     themeLightBtn: HTMLElement;
     // Quick Actions
@@ -92,6 +93,7 @@ export function initElements(): void {
         resetAppBtn: document.getElementById('resetAppBtn')!,
         restartScriptBtn: document.getElementById('restartScriptBtn')!,
         toggleSettingsBtn: document.getElementById('toggleSettingsBtn')!,
+        closeSettingsBtn: document.getElementById('closeSettingsBtn')!,
         themeDarkBtn: document.getElementById('themeDarkBtn')!,
         themeLightBtn: document.getElementById('themeLightBtn')!,
         // Quick Actions

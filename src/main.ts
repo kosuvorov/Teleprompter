@@ -167,6 +167,11 @@ els.toggleSettingsBtn.addEventListener('click', () => {
     els.settingsPanel.classList.toggle('hidden');
 });
 
+// Close Settings
+els.closeSettingsBtn.addEventListener('click', () => {
+    els.settingsPanel.classList.add('hidden');
+});
+
 // Font Size Slider
 els.fontSizeInput.addEventListener('input', (e) => {
     const val = parseInt((e.target as HTMLInputElement).value);
