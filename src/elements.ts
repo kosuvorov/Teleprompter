@@ -20,8 +20,7 @@ export interface Elements {
     micButton: HTMLElement;
     micIcon: HTMLElement;
     statusIndicator: HTMLElement;
-    mirrorBtn: HTMLElement;
-    mirrorToggleKnob: HTMLElement;
+    mirrorToggle: HTMLInputElement;
     browserWarning: HTMLElement;
     historyList: HTMLElement;
     historySection: HTMLElement;
@@ -76,8 +75,7 @@ export function initElements(): void {
         micButton: document.getElementById('micButton')!,
         micIcon: document.getElementById('micIcon')!,
         statusIndicator: document.getElementById('statusIndicator')!,
-        mirrorBtn: document.getElementById('mirrorBtn')!,
-        mirrorToggleKnob: document.getElementById('mirrorToggleKnob')!,
+        mirrorToggle: document.getElementById('mirrorToggle') as HTMLInputElement,
         browserWarning: document.getElementById('browserWarning')!,
         historyList: document.getElementById('historyList')!,
         historySection: document.getElementById('historySection')!,

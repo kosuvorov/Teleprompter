@@ -250,18 +250,13 @@ els.themeLightBtn.addEventListener('click', () => {
 });
 
 // Mirror Toggle
-els.mirrorBtn.addEventListener('click', () => {
-    state.isMirrored = !state.isMirrored;
-    const knob = els.mirrorToggleKnob;
+els.mirrorToggle.addEventListener('change', (e) => {
+    state.isMirrored = (e.target as HTMLInputElement).checked;
 
     if (state.isMirrored) {
         els.scrollContainer.classList.add('mirror-mode');
-        knob.classList.add('translate-x-6', 'bg-blue-500');
-        knob.classList.remove('bg-neutral-400');
     } else {
         els.scrollContainer.classList.remove('mirror-mode');
-        knob.classList.remove('translate-x-6', 'bg-blue-500');
-        knob.classList.add('bg-neutral-400');
     }
 });
 
