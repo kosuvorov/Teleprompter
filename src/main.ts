@@ -256,7 +256,10 @@ function loadScript(scriptText: string | null = null) {
         // Check bracket state
         if (word.startsWith('[')) inBracket = true;
 
-        const cleanWord = word.toLowerCase().replace(/[^\w\s]|_/g, "").replace(/\s+/g, " ");
+        // Clean word: remove punctuation but preserve letters from ALL languages
+        // Unicode property escapes: \p{L} matches any letter, \p{N} matches any number
+        const cleanWord = word.toLowerCase().replace(/[^\p{L}\p{N}\s]/gu, "").replace(/\s+/g, " ");
+
 
         // Logic for Skipping
         const isEmojiOrSymbol = cleanWord.length === 0;
