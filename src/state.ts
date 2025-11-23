@@ -19,6 +19,6 @@ export const state: AppState = {
         preserveFormatting: false,
         voiceCommandsEnabled: true,
         paragraphSpacing: 0.5,
-        smoothAnimations: false
+        smoothAnimations: true
     }
 };
