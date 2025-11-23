@@ -22,6 +22,7 @@ export interface Elements {
     statusIndicator: HTMLElement;
     mirrorToggle: HTMLInputElement;
     browserWarning: HTMLElement;
+    dismissWarningBtn: HTMLElement;
     historyList: HTMLElement;
     historySection: HTMLElement;
     stopSignToggle: HTMLInputElement;
@@ -80,6 +81,7 @@ export function initElements(): void {
         statusIndicator: document.getElementById('statusIndicator')!,
         mirrorToggle: document.getElementById('mirrorToggle') as HTMLInputElement,
         browserWarning: document.getElementById('browserWarning')!,
+        dismissWarningBtn: document.getElementById('dismissWarningBtn')!,
         historyList: document.getElementById('historyList')!,
         historySection: document.getElementById('historySection')!,
         stopSignToggle: document.getElementById('stopSignToggle') as HTMLInputElement,

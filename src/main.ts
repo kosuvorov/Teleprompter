@@ -390,4 +390,9 @@ els.scriptContent.style.textAlign = state.config.textAlign;
 
 els.smoothAnimationsToggle.checked = state.config.smoothAnimations;
 
+// Dismiss Browser Warning
+els.dismissWarningBtn.addEventListener('click', () => {
+    els.browserWarning.classList.add('hidden');
+});
+
 applySettings();
