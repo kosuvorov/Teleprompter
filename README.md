@@ -1,6 +1,6 @@
 # 🎬 Voice Teleprompter
 
-**Access the app:** [https://kosuvorov.github.io/Teleprompter/](https://kosuvorov.github.io/Teleprompter/)
+**Access the app:** [http://voiceprompter.xyz/](http://voiceprompter.xyz/)
 
 A modern, privacy-focused voice-controlled teleprompter that works completely offline. Uses your browser's built-in speech recognition (Web Speech API) and native iOS WebKit — no external APIs, completely private, and blazing fast on-device processing.
 
