@@ -2,7 +2,7 @@ import { defineConfig } from 'vite'
 import { VitePWA } from 'vite-plugin-pwa'
 
 export default defineConfig({
-    base: '/Teleprompter/',
+    // base: '/Teleprompter/', // Removed for custom domain
     plugins: [
         VitePWA({
             registerType: 'autoUpdate',
