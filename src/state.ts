@@ -16,7 +16,7 @@ export const state: AppState = {
         bgColor: '#000000',
         textAlign: 'left',
         showStopIcon: false,
-        preserveFormatting: false,
+        preserveFormatting: true,
         voiceCommandsEnabled: true,
         paragraphSpacing: 0.5,
         smoothAnimations: true,

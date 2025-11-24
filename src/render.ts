@@ -143,6 +143,7 @@ export function applySettings(): void {
     els.appBody.style.color = state.config.textColor;
     els.appBody.style.setProperty('--base-color', state.config.textColor);
     els.scriptContent.style.setProperty('--paragraph-spacing', `${state.config.paragraphSpacing}em`);
+    els.scriptContent.style.textAlign = state.config.textAlign;
 
     if (state.config.smoothAnimations) {
         els.scriptContent.classList.add('smooth-animations');
