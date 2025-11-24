@@ -31,7 +31,11 @@ export function initSpeech(): void {
 
         state.recognition.onend = () => {
             if (state.isListening) {
-                try { state.recognition.start(); } catch (e: any) { }
+                try {
+                    state.recognition.start();
+                } catch (error) {
+                    console.error('Failed to restart speech recognition:', error);
+                }
             } else {
                 updateMicUI(false);
             }
@@ -45,8 +49,10 @@ export function startListening(): void {
     try {
         state.recognition.start();
         updateMicUI(true);
-    } catch (e) {
-        console.error(e);
+    } catch (error) {
+        console.error('Failed to start speech recognition:', error);
+        state.isListening = false;
+        updateMicUI(false);
     }
 }
 
@@ -56,8 +62,8 @@ export function stopListening(): void {
     try {
         state.recognition.stop();
         updateMicUI(false);
-    } catch (e) {
-        console.error(e);
+    } catch (error) {
+        console.error('Failed to stop speech recognition:', error);
     }
 }
 

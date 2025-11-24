@@ -183,8 +183,6 @@ export function renderHistoryList(history: HistoryItem[], onLoad: (text: string)
     }
 
     els.clearHistoryBtn.classList.remove('hidden');
-    // Re-attach clear listener here or in main? Better in main, but we need to show/hide button.
-    // The button is static in HTML, so listener in main is fine. We just toggle visibility here.
 
     history.forEach(item => {
         const div = document.createElement('div');

@@ -35,7 +35,7 @@ function loadScript(text: string): void {
     if (state.recognition) {
         state.recognition.lang = selectedLang;
     }
-    console.log(`Using language: ${selectedLang}`);
+
 
     // Instant Update Logic:
     // If preserveFormatting is ON, we want to treat newlines as actual breaks.
@@ -242,18 +242,7 @@ els.bgColorInput.addEventListener('input', (e) => {
     els.alignBtns[align].addEventListener('click', () => {
         state.config.textAlign = align;
         els.scriptContent.style.textAlign = align;
-
-        // Update button styles
-        (['left', 'center', 'right'] as const).forEach(a => {
-            const btn = els.alignBtns[a];
-            if (a === align) {
-                btn.classList.remove('hover:bg-neutral-600');
-                btn.classList.add('bg-neutral-500', 'text-white');
-            } else {
-                btn.classList.add('hover:bg-neutral-600');
-                btn.classList.remove('bg-neutral-500', 'text-white');
-            }
-        });
+        updateAlignmentButtons();
     });
 });
 
@@ -303,7 +292,7 @@ els.languageSelect.addEventListener('change', (e) => {
     if (state.recognition) {
         state.recognition.lang = lang;
     }
-    console.log(`Language changed to: ${lang}`);
+
 });
 
 // Auto-Detect Button
@@ -377,47 +366,49 @@ els.smoothAnimationsToggle.addEventListener('change', (e) => {
 // Clear History Button
 els.clearHistoryBtn.addEventListener('click', clearHistory);
 
-// Initial Render
-renderHistoryList(getHistory(), loadScript);
-
-// Initialize UI with defaults
-els.fontSizeVal.textContent = `${state.config.fontSize}px`;
-els.fontSizeInput.value = state.config.fontSize.toString();
-els.scriptContent.style.fontSize = `${state.config.fontSize}px`;
-
-els.lineHeightVal.textContent = `${state.config.lineHeight}x`;
-els.lineHeightInput.value = state.config.lineHeight.toString();
-els.scriptContent.style.lineHeight = `${state.config.lineHeight}`;
-
-els.paragraphSpacingVal.textContent = `${state.config.paragraphSpacing}em`;
-els.paragraphSpacingInput.value = state.config.paragraphSpacing.toString();
-
-els.marginVal.textContent = `${state.config.margin}px`;
-els.marginInput.value = state.config.margin.toString();
-els.scriptContent.style.paddingLeft = `${state.config.margin}px`;
-els.scriptContent.style.paddingRight = `${state.config.margin}px`;
-
-els.activeLinePositionVal.textContent = `${state.config.activeLinePosition}%`;
-els.activeLinePositionInput.value = state.config.activeLinePosition.toString();
-
-els.scriptContent.style.textAlign = state.config.textAlign;
-// Update alignment buttons
-(['left', 'center', 'right'] as const).forEach(a => {
-    const btn = els.alignBtns[a];
-    if (a === state.config.textAlign) {
-        btn.classList.remove('hover:bg-neutral-600');
-        btn.classList.add('bg-neutral-500', 'text-white');
-    } else {
-        btn.classList.add('hover:bg-neutral-600');
-        btn.classList.remove('bg-neutral-500', 'text-white');
-    }
-});
-
-els.smoothAnimationsToggle.checked = state.config.smoothAnimations;
-
 // Dismiss Browser Warning
 els.dismissWarningBtn.addEventListener('click', () => {
     els.browserWarning.classList.add('hidden');
 });
 
-applySettings();
+// --- Initialization ---
+function initializeUI(): void {
+    // Set UI values from state
+    els.fontSizeVal.textContent = `${state.config.fontSize}px`;
+    els.fontSizeInput.value = state.config.fontSize.toString();
+
+    els.lineHeightVal.textContent = `${state.config.lineHeight}x`;
+    els.lineHeightInput.value = state.config.lineHeight.toString();
+
+    els.paragraphSpacingVal.textContent = `${state.config.paragraphSpacing}em`;
+    els.paragraphSpacingInput.value = state.config.paragraphSpacing.toString();
+
+    els.marginVal.textContent = `${state.config.margin}px`;
+    els.marginInput.value = state.config.margin.toString();
+
+    els.activeLinePositionVal.textContent = `${state.config.activeLinePosition}%`;
+    els.activeLinePositionInput.value = state.config.activeLinePosition.toString();
+
+    // Update alignment buttons
+    updateAlignmentButtons();
+
+    els.smoothAnimationsToggle.checked = state.config.smoothAnimations;
+
+    // Render history
+    renderHistoryList(getHistory(), loadScript);
+
+    // Apply all settings to DOM
+    applySettings();
+}
+
+function updateAlignmentButtons(): void {
+    (['left', 'center', 'right'] as const).forEach(a => {
+        const btn = els.alignBtns[a];
+        const isActive = a === state.config.textAlign;
+        btn.classList.toggle('bg-neutral-500', isActive);
+        btn.classList.toggle('text-white', isActive);
+        btn.classList.toggle('hover:bg-neutral-600', !isActive);
+    });
+}
+
+initializeUI();
