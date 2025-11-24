@@ -188,7 +188,7 @@ export function renderHistoryList(history: HistoryItem[], onLoad: (text: string)
 
     history.forEach(item => {
         const div = document.createElement('div');
-        div.className = "bg-neutral-800 p-3 rounded border border-neutral-700 hover:border-blue-500 cursor-pointer transition group flex justify-between items-center shadow-sm";
+        div.className = "bg-neutral-800 p-3 rounded border border-neutral-700 hover:border-blue-500 cursor-pointer transition group flex justify-between items-center shadow-sm min-w-[85%] md:min-w-0 snap-center";
         div.onclick = () => {
             els.inputScript.value = item.text;
             onLoad(item.text);
