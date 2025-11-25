@@ -35,9 +35,9 @@ export default defineConfig({
                 main: 'index.html',
                 about: 'about.html',
                 blog: 'blog/index.html',
-                blog_article1: 'blog/how-to-read-teleprompter-naturally.html',
-                blog_article2: 'blog/best-free-teleprompter-2025.html',
-                blog_article3: 'blog/why-voice-scrolling-is-essential.html'
+                blog_article1: 'blog/how-to-read-naturally.html',
+                blog_article2: 'blog/best-free-tools-2025.html',
+                blog_article3: 'blog/voice-scrolling-solo-creators.html'
             }
         }
     }
